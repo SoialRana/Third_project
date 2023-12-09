@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href ="{% static 'first_app/css/first.css' %}"/>
+</head>
+<body>
+    <h1>We are in the app</h1>
+    <h1>Author name: {{name}}</h1>
+    <img src="{% static 'first_app/image/img1.png' %}" alt="Natural Beauty"/>
+    {% if 'age>=18' %}
+    <p>Vai tumi driving license nite parve</p>
+    {% else %}
+    <p>tumi ekta sishu,bashay jao </p>
+    {% endif %}   
+    
+    {% comment %} ctrl+forward slash = comment {% endcomment %}
+
+     {% if 'marks>=90' %}
+    <p>Vai tumi golden A+ paicho</p>
+    {% elif 'marks >=70' and 'marks <=79' %}
+    <p> vai tumi A paicho </p>
+    {% elif 'marks >=40' and 'marks <=69' %}
+    <p> vai tumi pass korcho </p>
+    {% else %}
+    <p>vai tumi fail korcho</p>
+    {% endif %} 
+
+    {% comment %} <table border="1" width=50 > 
+        <tr>
+            <th>Id</th>
+            <th>Course</th>
+            <th>Teacher</th>
+        </tr>
+        
+            {% for i in courses %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.course}}</td>
+                <td>{{i.teacher}}</td>
+            </tr>
+            {% endfor %}
+    </table>  {% endcomment %}
+
+
+    <table>
+         {% comment %} filters in DTL
+        {{variable_name | filter_name}}  {% endcomment %}
+        <!-- add value -->
+        <h1>{{marks | add:"2"}}</h1>
+        <!-- divisible check -->
+        <h1>{{marks | divisibleby:"2"}}</h1>
+        <!-- length -->
+        <h1>{{name | length }}</h1>
+        <!-- word count -->
+        <h1>{{name | wordcount}}</h1>
+        <!-- Truncate words -->
+        <h1>{{blog | truncatewords:5 }}</h1>
+        <h1>{{blog | truncatechars:20 }}</h1>
+        <!-- Make list -->
+        <h1>{{name | make_list }}</h1>
+        <!-- Upper case  -->
+        <h1>{{name | upper }}</h1>
+        <!-- lower case  -->
+        <h1>{{name | lower }}</h1>
+        <!-- Join -->
+        <h1>{{lst | join:"," }}</h1>
+    </table>
+</body>
+</html>
